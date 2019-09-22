@@ -192,7 +192,7 @@ public class Sudoku {
 		        	}
 		        }
 		        if(i==m){
-		        	while(n!=0){
+		        	if(n!=0){
 			            setShuDu(generateShuDu);
 			            shuDu_solution(0,m);
 			            n--;
