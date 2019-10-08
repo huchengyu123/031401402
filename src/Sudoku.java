@@ -109,7 +109,7 @@ public class Sudoku {
      */
     public static void shuDu_solution(int k,int m) throws IOException {
         if (k == (m*m)) {
-          String src= "D:\\sudoku\\"+outputFilename;
+          String src= outputFilename;
             try{
             FileWriter fw = new FileWriter(src,true);
             for(int i=0;i<m;i++){
@@ -171,7 +171,7 @@ public class Sudoku {
     	
     	loadArgs(args);
     	int generateShuDu[][]=new int[10][10];   
-		File myFile = new File("D:\\sudoku",inputFilename);
+		File myFile = new File(inputFilename);
 		Reader reader = new InputStreamReader(new FileInputStream(myFile),"UTF-8"); 
 
 		int tempchar;  
