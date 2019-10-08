@@ -17,35 +17,35 @@ import java.util.Random;
 public class Sudoku {
 	
 	   /*
-     * ³õÊ¼»¯ÃüÁîĞĞ²ÎÊı
+     * åˆå§‹åŒ–å‘½ä»¤è¡Œå‚æ•°
      */
 	public static String inputFilename;
 	public static String outputFilename;
 	public static int m;
 	public static int n;
     /**
-     * ÅĞ¶ÏÔÚ¾Å¹¬¸ñÖĞµÄ×ø±ê(x,y)µÄÎ»ÖÃÉÏ²åÈëvalue£¬ÊÇ·ñ·ûºÏ¹æÔò
+     * åˆ¤æ–­åœ¨ä¹å®«æ ¼ä¸­çš„åæ ‡(x,y)çš„ä½ç½®ä¸Šæ’å…¥valueï¼Œæ˜¯å¦ç¬¦åˆè§„åˆ™
      */
     public static Boolean legal(int a[][],int x, int y, int value,int m) {
  
         for (int i = 0; i < m; i++) {
-            //Èç¹ûÁĞÖĞÓĞvalue£¬Ôò·µ»Øfalse
+            //å¦‚æœåˆ—ä¸­æœ‰valueï¼Œåˆ™è¿”å›false
             if (i != x && a[i][y] == value) {
                 return false;
             }
-            //Èç¹ûĞĞÖĞÓĞvalue£¬Ôò·µ»Øfalse
+            //å¦‚æœè¡Œä¸­æœ‰valueï¼Œåˆ™è¿”å›false
             if (i != y && a[x][i] == value) {
                 return false;
             }
         }
         if(m==9){
-            //(minX,minY)ÊÇ(x,y)ËùÊôĞ¡¾Å¹¬¸ñµÄ×óÉÏ½ÇµÄ×ø±ê
+            //(minX,minY)æ˜¯(x,y)æ‰€å±å°ä¹å®«æ ¼çš„å·¦ä¸Šè§’çš„åæ ‡
             int minX = x / 3 * 3;
             int minY = y / 3 * 3;
      
             for (int i = minX; i < minX + 3; i++) {
                 for (int j = minY; j < minY + 3; j++) {
-                    //Èç¹ûĞ¡¾Å¹¬¸ñÖĞµÄ·Ç(x,y)µÄ×ø±êÉÏµÄÖµÎªvalue£¬·µ»Øfalse
+                    //å¦‚æœå°ä¹å®«æ ¼ä¸­çš„é(x,y)çš„åæ ‡ä¸Šçš„å€¼ä¸ºvalueï¼Œè¿”å›false
                     if (i != x && j != y && a[i][j] == value) {
                         return false;
                     }
@@ -53,13 +53,13 @@ public class Sudoku {
             }
         }
         if(m==4){
-            //(minX,minY)ÊÇ(x,y)ËùÊôĞ¡4¹¬¸ñµÄ×óÉÏ½ÇµÄ×ø±ê
+            //(minX,minY)æ˜¯(x,y)æ‰€å±å°4å®«æ ¼çš„å·¦ä¸Šè§’çš„åæ ‡
             int minX = x / 2 * 2;
             int minY = y / 2 * 2;
 
             for (int i = minX; i < minX + 2; i++) {
                 for (int j = minY; j < minY + 2; j++) {
-                    //Èç¹ûĞ¡¾Å¹¬¸ñÖĞµÄ·Ç(x,y)µÄ×ø±êÉÏµÄÖµÎªvalue£¬·µ»Øfalse
+                    //å¦‚æœå°ä¹å®«æ ¼ä¸­çš„é(x,y)çš„åæ ‡ä¸Šçš„å€¼ä¸ºvalueï¼Œè¿”å›false
                     if (i != x && j != y && a[i][j] == value) {
                         return false;
                     }
@@ -67,13 +67,13 @@ public class Sudoku {
             }
         }
         if(m==8){
-            //(minX,minY)ÊÇ(x,y)ËùÊôĞ¡8¹¬¸ñµÄ×óÉÏ½ÇµÄ×ø±ê
+            //(minX,minY)æ˜¯(x,y)æ‰€å±å°8å®«æ ¼çš„å·¦ä¸Šè§’çš„åæ ‡
             int minX = x / 4 * 4;
             int minY = y / 2 * 2;
      
             for (int i = minX; i < minX + 4; i++) {
                 for (int j = minY; j < minY + 2; j++) {
-                    //Èç¹ûĞ¡¾Å¹¬¸ñÖĞµÄ·Ç(x,y)µÄ×ø±êÉÏµÄÖµÎªvalue£¬·µ»Øfalse
+                    //å¦‚æœå°ä¹å®«æ ¼ä¸­çš„é(x,y)çš„åæ ‡ä¸Šçš„å€¼ä¸ºvalueï¼Œè¿”å›false
                     if (i != x && j != y && a[i][j] == value) {
                         return false;
                     }
@@ -81,13 +81,13 @@ public class Sudoku {
             }
         }
         if(m==6){
-            //(minX,minY)ÊÇ(x,y)ËùÊôĞ¡¹¬¸ñµÄ×óÉÏ½ÇµÄ×ø±ê
+            //(minX,minY)æ˜¯(x,y)æ‰€å±å°å®«æ ¼çš„å·¦ä¸Šè§’çš„åæ ‡
             int minX = x / 2 * 2;
             int minY = y / 3 * 3;
      
             for (int i = minX; i < minX + 2; i++) {
                 for (int j = minY; j < minY + 3; j++) {
-                    //Èç¹ûĞ¡¾Å¹¬¸ñÖĞµÄ·Ç(x,y)µÄ×ø±êÉÏµÄÖµÎªvalue£¬·µ»Øfalse
+                    //å¦‚æœå°ä¹å®«æ ¼ä¸­çš„é(x,y)çš„åæ ‡ä¸Šçš„å€¼ä¸ºvalueï¼Œè¿”å›false
                     if (i != x && j != y && a[i][j] == value) {
                         return false;
                     }
@@ -99,21 +99,21 @@ public class Sudoku {
         return true;
     }
 
-    //µÚÈı²¿·Ö£¬ÊÇÕë¶ÔµÚ¶ş²¿·ÖÉú³ÉµÄÊı¶ÀÓÎÏ·£¬Ê¹ÓÃ»ØËİ·¨£¬ÊµÏÖ¶ÔÊı¶ÀµÄ½â´ğ¡£
-    //shuDu[][]ÊÇÓÃÀ´´æ·ÅÊı¶ÀÓÎÏ·µÄ¶şÎ¬Êı×é¡£
+    //ç¬¬ä¸‰éƒ¨åˆ†ï¼Œæ˜¯é’ˆå¯¹ç¬¬äºŒéƒ¨åˆ†ç”Ÿæˆçš„æ•°ç‹¬æ¸¸æˆï¼Œä½¿ç”¨å›æº¯æ³•ï¼Œå®ç°å¯¹æ•°ç‹¬çš„è§£ç­”ã€‚
+    //shuDu[][]æ˜¯ç”¨æ¥å­˜æ”¾æ•°ç‹¬æ¸¸æˆçš„äºŒç»´æ•°ç»„ã€‚
     public static int shuDu[][] = new int[9][9];
     public static void setShuDu(int[][] shuDu) {
         Sudoku.shuDu = shuDu;
     }
  
     /**
-     * »ØËİ·¨Çó½âÊı¶À£¬²Î¿¼µÚÒ»²¿·ÖÓÃ»ØËİ·¨Ëæ»úÉú³ÉÊı¶ÀµÄ½â¿Õ¼äµÄ´úÂë
+     * å›æº¯æ³•æ±‚è§£æ•°ç‹¬ï¼Œå‚è€ƒç¬¬ä¸€éƒ¨åˆ†ç”¨å›æº¯æ³•éšæœºç”Ÿæˆæ•°ç‹¬çš„è§£ç©ºé—´çš„ä»£ç 
      * @param k
      * @throws IOException 
      */
     public static void shuDu_solution(int k,int m) throws IOException {
         if (k == (m*m)) {
-          String src= "D:\\sudoku\\"+outputFilename;
+          String src= outputFilename;
             try{
             FileWriter fw = new FileWriter(src,true);
             for(int i=0;i<m;i++){
@@ -125,7 +125,7 @@ public class Sudoku {
                 fw.write("\r\n");
             }
             fw.write("\r\n");
-            fw.close(); // ×îºó¼ÇµÃ¹Ø±ÕÎÄ¼ş  
+            fw.close(); // æœ€åè®°å¾—å…³é—­æ–‡ä»¶  
             }
             catch (Exception e) {  
                 e.printStackTrace();  
@@ -179,7 +179,7 @@ public class Sudoku {
     	
     	loadArgs(args);
     	int generateShuDu[][]=new int[10][10];   
-		File myFile = new File("D:\\sudoku",inputFilename);
+		File myFile = new File(inputFilename);
 		Reader reader = new InputStreamReader(new FileInputStream(myFile),"UTF-8"); 
 
 		int tempchar;  
